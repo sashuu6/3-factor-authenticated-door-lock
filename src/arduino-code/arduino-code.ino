@@ -7,18 +7,16 @@
 //        $$$$$$$  |\$$$$$$$ |$$$$$$$  |$$ |  $$ |\$$$$$$  |\$$$$$$  | $$$$$$  |
 //        \_______/  \_______|\_______/ \__|  \__| \______/  \______/  \______/ 
 //
+// Project name: 3-factor authenticated lock
 // Author: Sashwat K
-// Project: 3-Factor Authenticated lock
-// Created On: 17 Feb 2019
+// Created On: 09 Mar 2019
 // Revision: 1
-// Last Edited: 17 Feb 2019
+// Last Edited: 09 Mar 2019
 
 void setup() {
-  // put your setup code here, to run once:
   
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  
 }
