@@ -42,7 +42,7 @@ long passCode = 0;
 long correctPassCode = 8454842;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   lcd.begin(16, 2);
   pinMode(firstAuthentication, INPUT);
   pinMode(secondAuthentication, OUTPUT);
@@ -51,7 +51,8 @@ void setup() {
 
 void loop() {
   int firstState = digitalRead(firstAuthentication);
-  Serial.println(firstState);
+  Serial.println("--------------------------");
+  Serial.print("Key switch: ");Serial.println(firstState);
   if (firstState == 1) {
     int i=0;
     key = keypad.getKey();
@@ -61,8 +62,11 @@ void loop() {
         lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print("cleared");
+        Serial.println("Pin Cleared");
+        digitalWrite(secondAuthentication, LOW);
         n=0;
         delay(500);
+        lcd.clear();
       }
       else if(key == '*') {
         if(passCode == correctPassCode) {
@@ -70,13 +74,15 @@ void loop() {
           lcd.setCursor(0, 0);
           lcd.print("Access granted");
           digitalWrite(secondAuthentication, HIGH);
-          Serial.println("DONE");
+          Serial.println("Access granted");
           delay(500);
         }
         else {
           lcd.clear();
           lcd.setCursor(0, 0);
           lcd.print("Access denied");
+          Serial.println("Access denied");
+          digitalWrite(secondAuthentication, LOW);
           delay(500);
         }
       }
