@@ -51,6 +51,7 @@ void setup() {
 
 void loop() {
   int firstState = digitalRead(firstAuthentication);
+  Serial.println(firstState);
   if (firstState == 1) {
     int i=0;
     key = keypad.getKey();

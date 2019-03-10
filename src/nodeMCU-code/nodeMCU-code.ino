@@ -20,18 +20,25 @@ int thirdAuthentication = D2;
 void setup() {
   Serial.begin(9600);
   pinMode(switchKey, INPUT);
-  pinMode(firstAuthentication, INPUT);
+  pinMode(firstAuthentication, OUTPUT);
+  pinMode(thirdAuthentication, INPUT);
 }
 
 void loop() {
   int keySwitchState = digitalRead(switchKey);
-  Serial.print("Key switch: ");
-  Serial.println(keySwitchState);
+  int thirdAuthenticationState = digitalRead(thirdAuthentication);
   if(keySwitchState == 1) {
     digitalWrite(firstAuthentication, HIGH);
+    Serial.print("Key switch: ");
+    Serial.println(keySwitchState);
+    if(thirdAuthenticationState == 1) {
+      Serial.println("2nd authentication complete");
+    }
+    else {
+      Serial.println("2nd authentication incomplete");
+    }
   }
   else {
     digitalWrite(firstAuthentication, LOW);
   }
-  
 }
