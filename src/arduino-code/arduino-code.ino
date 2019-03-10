@@ -34,7 +34,7 @@ byte colPins[COLS] = {6, 7, 8}; //connect to the column pinouts of the keypad
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
 char key;
-int temp;
+int temp,n;
 long passCode = 0;
 
 void setup() {
@@ -43,19 +43,24 @@ void setup() {
 }
 
 void loop() {
+  int i=0;
   key = keypad.getKey();
   if (key) {
     if (key == '#') {
       passCode = 0;
       lcd.clear();
+      n=0;
       Serial.print("passCode cleared");
     }
     else {
       temp = key - '0';
       passCode = (passCode * 10) + temp;
-      Serial.println(passCode);
+      n++;
       lcd.clear();
-      lcd.print("*");
+      while(i<n) {
+        lcd.print("*");
+        i++;
+      }
       delay(1500);
     }
   }
