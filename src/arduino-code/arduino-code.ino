@@ -7,10 +7,10 @@
 //        $$$$$$$  |\$$$$$$$ |$$$$$$$  |$$ |  $$ |\$$$$$$  |\$$$$$$  | $$$$$$  |
 //        \_______/  \_______|\_______/ \__|  \__| \______/  \______/  \______/
 //
-// Project name: 3-factor authenticated lock
+// Project name: 3-factor authenticated lock (Arduino code)
 // Author: Sashwat K
 // Created On: 09 Mar 2019
-// Revision: 1
+// Revision: 2
 // Last Edited: 09 Mar 2019
 
 #include <Wire.h>
@@ -45,6 +45,7 @@ void setup() {
   Serial.begin(9600);
   lcd.begin(16, 2);
   pinMode(firstAuthentication, INPUT);
+  pinMode(secondAuthentication, OUTPUT);
   lcd.clear();
 }
 
